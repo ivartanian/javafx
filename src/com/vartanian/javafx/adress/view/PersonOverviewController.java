@@ -4,11 +4,15 @@ import com.vartanian.javafx.adress.MainApp;
 import com.vartanian.javafx.adress.model.Person;
 import com.vartanian.javafx.adress.util.DateUtil;
 import javafx.beans.value.ObservableValue;
+import javafx.event.Event;
+import javafx.event.EventTarget;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import javafx.scene.effect.*;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.Stop;
 import javafx.util.Callback;
 
 /**
@@ -157,4 +161,62 @@ public class PersonOverviewController {
         }
     }
 
+    @FXML
+    public void handleMouseEntered(Event event) {
+        Stop[] stops = new Stop[] {new Stop(0, Color.RED),new Stop(1, Color.YELLOW)};
+        LinearGradient lg = new LinearGradient(0, 0, 0.25, 0.25, true, CycleMethod.REFLECT, stops);
+        ColorInput colorInput = new ColorInput();
+        colorInput.setWidth(97);
+        colorInput.setHeight(32);
+        colorInput.setPaint(lg);
+
+        //---------BLEND---------
+//        final Blend effect = new Blend();
+//        effect.setMode(BlendMode.LIGHTEN);
+//        effect.setBottomInput(colorInput);
+
+        //---------BLOOM---------
+//        final Bloom effect=new Bloom();
+//        effect.setThreshold(0.3);
+
+        //---------GLOW---------
+//        Glow effect=new Glow();
+//        effect.setLevel(0.9);
+
+        //---------DROPSHADOW---------
+//        final DropShadow effect=new DropShadow();
+//        effect.setColor(Color.OLIVE);
+
+        //---------SHADOW---------
+//        Shadow effect=new Shadow();
+//        effect.setColor(Color.web("#a0522d"));
+
+        //---------INNERSHADOW---------
+//        InnerShadow effect=new InnerShadow();
+//        effect.setColor(Color.OLIVE);
+
+        //---------BOXBLUR---------
+//        BoxBlur effect = new BoxBlur();
+
+        //---------MONITORBLUR---------
+//        final MotionBlur effect = new MotionBlur();
+//        effect.setRadius(15.0);
+//        effect.setAngle(90.0);
+
+        //---------LIGHTING---------
+        final Light.Distant lightDistant = new Light.Distant();
+        final Light.Point lightPoint = new Light.Point();
+        final Light.Spot lightSpot = new Light.Spot();
+        final Lighting effect = new Lighting();
+        effect.setLight(lightDistant);
+
+        Button button = (Button) event.getTarget();
+        button.setEffect(effect);
+    }
+
+    @FXML
+    public void handleMouseExited(Event event) {
+        Button button = (Button) event.getTarget();
+        button.setEffect(null);
+    }
 }

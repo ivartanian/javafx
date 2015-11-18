@@ -4,8 +4,10 @@ package com.vartanian.javafx.adress.model;
  * Created by vartanian on 17.11.2015.
  */
 
+import com.vartanian.javafx.adress.util.LocalDateAdapter;
 import javafx.beans.property.*;
 
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 
 /**
@@ -106,6 +108,7 @@ public class Person {
         return city;
     }
 
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     public LocalDate getBirthday() {
         return birthday.get();
     }
