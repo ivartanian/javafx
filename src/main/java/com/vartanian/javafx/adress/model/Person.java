@@ -7,6 +7,10 @@ package com.vartanian.javafx.adress.model;
 import com.vartanian.javafx.adress.util.LocalDateAdapter;
 import javafx.beans.property.*;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 
@@ -15,13 +19,25 @@ import java.time.LocalDate;
  *
  * @author Marco Jakob
  */
+@Entity
+@Table(name = "persons")
+@Access(AccessType.PROPERTY)
 public class Person {
 
+    @Id
+    @GeneratedValue
+    private Long id;
+
     private final StringProperty firstName;
+
     private final StringProperty lastName;
+
     private final StringProperty street;
+
     private final IntegerProperty postalCode;
+
     private final StringProperty city;
+
     private final ObjectProperty<LocalDate> birthday;
 
     /**
