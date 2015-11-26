@@ -24,8 +24,6 @@ import java.time.LocalDate;
 @Access(AccessType.PROPERTY)
 public class Person {
 
-    @Id
-    @GeneratedValue
     private Long id;
 
     private final StringProperty firstName;
@@ -64,6 +62,18 @@ public class Person {
         this.birthday = new SimpleObjectProperty<LocalDate>(LocalDate.of(1999, 2, 21));
     }
 
+    @Id
+    @GeneratedValue
+    @Column(name="id")
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Column(name="firstName")
     public String getFirstName() {
         return firstName.get();
     }
@@ -76,6 +86,7 @@ public class Person {
         return firstName;
     }
 
+    @Column(name="lastName")
     public String getLastName() {
         return lastName.get();
     }
@@ -88,6 +99,7 @@ public class Person {
         return lastName;
     }
 
+    @Column(name="street")
     public String getStreet() {
         return street.get();
     }
@@ -100,6 +112,7 @@ public class Person {
         return street;
     }
 
+    @Column(name="postalCode")
     public int getPostalCode() {
         return postalCode.get();
     }
@@ -112,6 +125,7 @@ public class Person {
         return postalCode;
     }
 
+    @Column(name="city")
     public String getCity() {
         return city.get();
     }
@@ -125,6 +139,7 @@ public class Person {
     }
 
     @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    @Column(name="birthday")
     public LocalDate getBirthday() {
         return birthday.get();
     }
