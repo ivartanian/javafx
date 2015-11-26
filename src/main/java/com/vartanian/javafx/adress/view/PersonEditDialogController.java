@@ -5,6 +5,8 @@ package com.vartanian.javafx.adress.view;
  */
 
 import com.vartanian.javafx.adress.model.Person;
+import com.vartanian.javafx.adress.services.repository.PersonService;
+import com.vartanian.javafx.adress.services.repository.PersonServiceImpl;
 import com.vartanian.javafx.adress.util.DateUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -17,6 +19,8 @@ import javafx.stage.Stage;
  * @author Marco Jakob
  */
 public class PersonEditDialogController {
+
+    private PersonService personService;
 
     @FXML
     private TextField firstNameField;
@@ -42,6 +46,7 @@ public class PersonEditDialogController {
      */
     @FXML
     private void initialize() {
+        personService = new PersonServiceImpl();
     }
 
     /**
@@ -93,6 +98,7 @@ public class PersonEditDialogController {
             person.setBirthday(DateUtil.parse(birthdayField.getText()));
 
             okClicked = true;
+            personService.savePerson(person);
             dialogStage.close();
         }
     }

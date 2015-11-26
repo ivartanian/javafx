@@ -2,7 +2,10 @@ package com.vartanian.javafx.adress.view;
 
 import com.vartanian.javafx.MainApp;
 import com.vartanian.javafx.adress.model.Person;
+import com.vartanian.javafx.adress.services.repository.PersonService;
+import com.vartanian.javafx.adress.services.repository.PersonServiceImpl;
 import com.vartanian.javafx.adress.util.DateUtil;
+import javafx.collections.FXCollections;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -16,6 +19,9 @@ import javafx.scene.paint.Stop;
  * Created by vartanian on 17.11.2015.
  */
 public class PersonOverviewController {
+
+    private PersonService personService;
+
     @FXML
     private TableView<Person> personTable;
     @FXML
@@ -52,6 +58,9 @@ public class PersonOverviewController {
      */
     @FXML
     private void initialize() {
+
+        personService = new PersonServiceImpl();
+
         // Initialize the person table with the two columns.
         firstNameColumn.setCellValueFactory(param -> param.getValue().firstNameProperty());
         lastNameColumn.setCellValueFactory(param -> param.getValue().lastNameProperty());
@@ -73,7 +82,7 @@ public class PersonOverviewController {
         this.mainApp = mainApp;
 
         // Add observable list data to the table
-        personTable.setItems(mainApp.getPersonData());
+        personTable.setItems(FXCollections.observableArrayList(personService.getAllPersons()));
     }
 
     /**
@@ -110,6 +119,7 @@ public class PersonOverviewController {
         int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
             personTable.getItems().remove(selectedIndex);
+            personService.deletePerson(1L);
         } else {
             // Nothing selected.
             showAlert();

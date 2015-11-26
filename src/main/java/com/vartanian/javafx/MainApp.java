@@ -4,6 +4,8 @@ package com.vartanian.javafx;/**
 
 import com.vartanian.javafx.adress.model.Person;
 import com.vartanian.javafx.adress.model.PersonListWrapper;
+import com.vartanian.javafx.adress.services.repository.PersonService;
+import com.vartanian.javafx.adress.services.repository.PersonServiceImpl;
 import com.vartanian.javafx.adress.view.BirthdayStatisticsController;
 import com.vartanian.javafx.adress.view.PersonEditDialogController;
 import com.vartanian.javafx.adress.view.PersonOverviewController;
@@ -24,9 +26,12 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.prefs.Preferences;
 
 public class MainApp extends Application {
+
+    private PersonService personService = new PersonServiceImpl();
 
     private Stage primaryStage;
     private BorderPane rootLayout;
@@ -37,16 +42,18 @@ public class MainApp extends Application {
      * Constructor
      */
     public MainApp() {
-        // Add some sample data
-        personData.add(new Person("Hans", "Muster"));
-        personData.add(new Person("Ruth", "Mueller"));
-        personData.add(new Person("Heinz", "Kurz"));
-        personData.add(new Person("Cornelia", "Meier"));
-        personData.add(new Person("Werner", "Meyer"));
-        personData.add(new Person("Lydia", "Kunz"));
-        personData.add(new Person("Anna", "Best"));
-        personData.add(new Person("Stefan", "Meier"));
-        personData.add(new Person("Martin", "Mueller"));
+        List<Person> allPersons = personService.getAllPersons();
+        personData.setAll(allPersons);
+//        // Add some sample data
+//        personData.add(new Person("Hans", "Muster"));
+//        personData.add(new Person("Ruth", "Mueller"));
+//        personData.add(new Person("Heinz", "Kurz"));
+//        personData.add(new Person("Cornelia", "Meier"));
+//        personData.add(new Person("Werner", "Meyer"));
+//        personData.add(new Person("Lydia", "Kunz"));
+//        personData.add(new Person("Anna", "Best"));
+//        personData.add(new Person("Stefan", "Meier"));
+//        personData.add(new Person("Martin", "Mueller"));
     }
 
     /**

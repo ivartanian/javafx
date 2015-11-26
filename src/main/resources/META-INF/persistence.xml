@@ -5,7 +5,7 @@
 http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
 
-    <persistence-unit name="address" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="javafx" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <class>com.vartanian.javafx.adress.model.Person</class>
         <properties>
@@ -13,7 +13,7 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/javafx"/>
             <property name="javax.persistence.jdbc.user" value="root"/>
-            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
             <property name="eclipselink.logging.level" value="INFO"/>
         </properties>
     </persistence-unit>

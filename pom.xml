@@ -118,7 +118,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <vendor>allynote</vendor>
+                    <vendor>javafx</vendor>
                     <mainClass>com.vartanian.javafx.MainApp</mainClass>
                     <nativeOutputDir>${project.build.directory}/os</nativeOutputDir>
                     <jfxAppOutputDir>${project.build.directory}/jfx</jfxAppOutputDir>

@@ -24,7 +24,7 @@ import java.time.LocalDate;
 @Access(AccessType.PROPERTY)
 public class Person {
 
-    private Long id;
+    private LongProperty id;
 
     private final StringProperty firstName;
 
@@ -66,11 +66,11 @@ public class Person {
     @GeneratedValue
     @Column(name="id")
     public Long getId() {
-        return id;
+        return id.get();
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.id.set(id);
     }
 
     @Column(name="firstName")
