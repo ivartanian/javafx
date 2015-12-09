@@ -22,6 +22,9 @@ public class RootLayoutController {
     // Reference to the main application
     private MainApp mainApp;
 
+    public RootLayoutController() {
+    }
+
     /**
      * Is called by the main application to give a reference back to itself.
      *
