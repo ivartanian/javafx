@@ -23,6 +23,9 @@ public class PersonListWrapper {
     @XmlElement(name = "person")
     private List<Person> persons;
 
+    public PersonListWrapper() {
+    }
+
     public List<Person> getPersons() {
         return persons;
     }
