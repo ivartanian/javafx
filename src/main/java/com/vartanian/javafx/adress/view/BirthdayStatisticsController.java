@@ -26,6 +26,8 @@ public class BirthdayStatisticsController {
 
     @FXML
     private BarChart<String, Integer> barChart;
+//    @FXML
+//    private BarChart<String, Integer> barChart;
 
     @FXML
     private CategoryAxis xAxis;
