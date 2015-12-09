@@ -12,6 +12,7 @@ public class JpaPersonDaoImpl implements PersonDao {
 
     private EntityManagerFactory emf;
     private EntityManager em;
+//    private EntityManager em;
 
     public JpaPersonDaoImpl() {
         emf = Persistence.createEntityManagerFactory("javafx");
